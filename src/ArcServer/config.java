@@ -9,6 +9,6 @@ public class config {
  public static final String SERVER_NAME = "Arc Dev Server";
  public static final int MAX_USERS = 10;
  public static final boolean IS_USING_XCHAT_KEY = false;
- public static final String SERVER_KEY = "xChat";
+ public static final String SERVER_KEY = "arc";
  public static final String DEFAULT_WELCOME_MESSAGE = "Welcome to The Arc Dev Server!";
 }
