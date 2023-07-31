@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class server {
+	
+	
     // List to store all connected clients
     private static List<PrintWriter> clientWriters = new ArrayList<>();
 
