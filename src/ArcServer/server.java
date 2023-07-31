@@ -17,8 +17,12 @@ public class server {
 
     public static void main(String[] args) {
         try {
+        	System.out.println("Server is starting...");
             ServerSocket serverSocket = new ServerSocket(config.SERVER_PORT);
-            System.out.println("Server is running...");
+            System.out.println("Loading Server Configurations");
+            System.out.println("Server Configs; " + config.SERVER_IP + ":" + config.SERVER_PORT + ":" + config.SERVER_NAME
+            + " // MAX_USERS: " + config.MAX_USERS + " // KEY: " + config.SERVER_KEY);
+            
 
             // Load user commands
             userCommands userCommandsHandler = new userCommands(clientWriters);
