@@ -44,6 +44,13 @@ public class server {
             e.printStackTrace();
         }
     }
+    
+ // Method to broadcast a message to all connected clients
+    private static void broadcast(String message) {
+        for (PrintWriter clientWriter : clientWriters) {
+            clientWriter.println(message);
+        }
+    }
 
     private static void handleClient(Socket clientSocket, PrintWriter writer, userCommands userCommandsHandler) {
         try {
@@ -76,7 +83,7 @@ public class server {
 
                         // Check if the message is a command
                         if (message.startsWith("/")) {
-                            String commandResponse = userCommandsHandler.executeCommand(message, writer);
+                            String commandResponse = userCommandsHandler.executeCommand(message, pseudo, writer);
                             if ("disconnect".equals(commandResponse)) {
                                 // Disconnect the client gracefully
                                 clientSocket.close();
@@ -86,9 +93,7 @@ public class server {
                             }
                         } else {
                             // Broadcast the received message to all connected clients, including the sender
-                            for (PrintWriter clientWriter : clientWriters) {
-                                clientWriter.println(pseudo + ": " + message);
-                            }
+                            broadcast(pseudo + ": " + message);
                         }
                     }
                 } catch (IOException e) {
